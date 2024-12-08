@@ -8,6 +8,7 @@ import { UpdateComponent } from './update/update.component';
 import { UserRoutingModule } from './user-routing.module';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserDeleteComponent } from './user-delete/user-delete.component';
+import { DetailluserComponent } from './detailluser/detailluser.component';
 
 
 
@@ -17,6 +18,7 @@ import { UserDeleteComponent } from './user-delete/user-delete.component';
     UpdateComponent,
     UserListComponent,
     UserDeleteComponent,
+    DetailluserComponent,
   ],
   imports: [
     CommonModule,ClarityModule,FormsModule,ReactiveFormsModule,ReactiveFormsModule,UserRoutingModule
