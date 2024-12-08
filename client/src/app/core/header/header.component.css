@@ -1,0 +1,16 @@
+.header-logo {
+    width: 60px; /* Ajustez la taille selon vos besoins */
+    height: auto; /* Conserve les proportions de l'image */
+    max-height: 80px; /* Empêche l'image de dépasser le header */
+  }
+  
+  .header-6 .branding {
+    display: flex;
+    align-items: center; /* Aligne verticalement l'image et le texte */
+    gap: 10px; /* Ajoute de l'espace entre l'image et le texte */
+  }
+  
+  .header-6 {
+    padding: 10px 20px; /* Ajustez les marges pour un header équilibré */
+  }
+  

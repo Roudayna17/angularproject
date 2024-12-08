@@ -1,0 +1,24 @@
+<div class="modal" tabindex="-1" role="dialog" aria-hidden="true" *ngIf="isModalOpen">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Supprimer équipement</h3>
+                <button aria-label="Close" class="close" type="button" (click)="closeAction()">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Êtes-vous sûr de vouloir supprimer l'équipement <strong>{{ equipmentName }}</strong> ?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline-secondary" type="button" (click)="closeAction()">
+                    Annuler
+                </button>
+                <button class="btn btn-danger" type="button" (click)="confirmDelete()">
+                    Supprimer
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-backdrop" aria-hidden="true" *ngIf="isModalOpen"></div>

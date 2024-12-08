@@ -1,0 +1,132 @@
+
+<form clrStepper [formGroup]="form" (ngSubmit)="submit()">
+    <clr-stepper-panel formGroupName="name">
+      <clr-step-title>Coordonnées d' utilisateur</clr-step-title>
+      <clr-step-description>.</clr-step-description>
+      <clr-step-content *clrIfExpanded>
+        <clr-input-container>
+          <label>Nom:</label>
+          <input clrInput formControlName="firstName" />
+          <clr-control-error *clrIfError="'required'">Le champ est obligatoire.</clr-control-error>
+          <clr-control-error *clrIfError="'pattern'">Le champ doit contenir uniquement des caractères alphabétiques.</clr-control-error>
+          <clr-control-error *clrIfError="'minlength'">Le champ doit contenir au moins 2 caractères.</clr-control-error>
+  
+        </clr-input-container>
+        <clr-input-container>
+          <label>Prenom:</label>
+          <input clrInput formControlName="lastName" />
+          <clr-control-error *clrIfError="'required'">Le champ est obligatoire.</clr-control-error>
+          <clr-control-error *clrIfError="'pattern'">Le champ doit contenir uniquement des caractères alphabétiques.</clr-control-error>
+          <clr-control-error *clrIfError="'minlength'">Le champ doit contenir au moins 2 caractères.</clr-control-error>
+        </clr-input-container>
+        <clr-input-container>
+            <label>Nom_utilisateur:</label>
+            <input clrInput formControlName="user" />
+            <clr-control-error *clrIfError="'required'">Le champ est obligatoire.</clr-control-error>
+          <clr-control-error *clrIfError="'pattern'">Le champ doit contenir uniquement des caractères alphabétiques.</clr-control-error>
+          <clr-control-error *clrIfError="'minlength'">Le champ doit contenir au moins 2 caractères.</clr-control-error>
+          </clr-input-container>
+        <button clrStepButton="next">suivant</button>
+      </clr-step-content>
+    </clr-stepper-panel>
+  
+    <clr-stepper-panel formGroupName="contact">
+      <clr-step-title>Contact Information</clr-step-title>
+      <clr-step-content *clrIfExpanded>
+        <clr-input-container>
+          <label>Email:</label>
+          <input clrInput formControlName="email" />
+          <clr-control-error *clrIfError="'required'" >le champs est obligatoire</clr-control-error>
+        </clr-input-container>
+  
+        <clr-input-container>
+          <label>Téléphone :</label>
+          <input clrInput formControlName="phone" />
+          <clr-control-error *clrIfError="'required'">Le champ est obligatoire.</clr-control-error>
+          <clr-control-error *clrIfError="'pattern'">Veuillez entrer un numéro de téléphone valide.</clr-control-error>
+        </clr-input-container>
+        <clr-input-container>
+          <label>Fax :</label>
+          <input clrInput formControlName="phone" />
+          <clr-control-error *clrIfError="'required'">Le champ est obligatoire.</clr-control-error>
+          <clr-control-error *clrIfError="'pattern'">Veuillez entrer un numéro de fax valide.</clr-control-error>
+          </clr-input-container>
+  
+        <button clrStepButton="next">suivant</button>
+      </clr-step-content>
+    </clr-stepper-panel>
+    <clr-stepper-panel formGroupName="Adress">
+        <clr-step-title>Adress</clr-step-title>
+        <clr-step-content *clrIfExpanded>
+            <clr-input-container>
+                <label>Adresse:</label>
+                <input clrInput formControlName="adress" />
+              
+              </clr-input-container>
+          <clr-input-container>
+            <label>Ville:</label>
+            <input clrInput formControlName="ville" />
+          
+          </clr-input-container>
+    
+          <clr-input-container>
+            <label>code postal:</label>
+            <input clrInput formControlName="codepostal" />
+           
+          </clr-input-container>
+          <clr-input-container>
+              <label>RUE:</label>
+              <input clrInput formControlName="street" />
+            
+            </clr-input-container>
+            <button clrStepButton="next">suivant</button>
+
+        </clr-step-content>
+    </clr-stepper-panel>
+    <clr-stepper-panel formGroupName="submit">
+      <clr-step-title>Sumbit</clr-step-title>
+  <!-- title-->
+  
+      <clr-step-content *clrIfExpanded>
+     
+  
+        <table class="table">
+          <thead>
+            <tr>
+              <th class="left">Nom</th>
+              <th>Prenom</th>
+              <th>Nom_utilisateur</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>fax</th>
+              <th>ville</th>
+              <th>code postal</th>
+              <th>Adress</th>
+              <th>Rue</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="left">{{form.value.name.firstName}}</td>
+              <td>{{form.value.name.lastName}}</td>
+              <td>{{form.value.name.user}}</td>
+              <td>{{form.value.contact.email}}</td>
+              <td>{{form.value.contact.phone}}</td>
+              <td>{{form.value.contact.Fax}}</td>
+              <td>{{form.value.contact.Ville}}</td>
+              <td>{{form.value.contact.codepostal}}</td>
+              <td>{{form.value.contact.street}}</td>
+
+            </tr>
+            
+          
+          </tbody>
+        </table>
+        <button clrStepButton="submit">submit</button>
+  
+         <!-- container-->
+      </clr-step-content>
+    </clr-stepper-panel>
+
+</form>
+  

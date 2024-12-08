@@ -1,0 +1,66 @@
+<h3> Espace utilisateur</h3>
+
+<clr-datagrid   [(clrDgSelected)]="selected">
+    <clr-dg-action-bar>
+        <div class="btn-group btn-primary">
+            <button type="button" class="btn btn-success" routerLink="/add-user"> <cds-icon shape="plus"></cds-icon>
+Ajoute </button>
+            <button type="button" class="btn btn-danger" (click)="deleteAction()" *ngIf="selected.length >=1"> <cds-icon shape="trash"></cds-icon>
+ Supprimer</button>
+            <button type="button" class="btn" routerLink="/update-user"  *ngIf="selected.length == 1">
+            <cds-icon shape="pencil"></cds-icon>   Modifie
+            </button>
+        </div>
+
+    </clr-dg-action-bar>
+    <clr-dg-column>User ID</clr-dg-column>
+    <clr-dg-column> Nom d'utilisateur</clr-dg-column>
+    <clr-dg-column> Prénom d'utilisateur</clr-dg-column>
+     <clr-dg-column> email</clr-dg-column>
+    <clr-dg-column> Role</clr-dg-column>
+
+    <clr-dg-column>Date de création </clr-dg-column>
+
+    <clr-dg-row *ngFor="let user of users" [clrDgItem]="user">
+        <clr-dg-cell>{{ user.id }}</clr-dg-cell>
+        <clr-dg-cell>{{ user.firstName }}</clr-dg-cell>
+        <clr-dg-cell>{{ user.lastName  }}</clr-dg-cell>
+        <clr-dg-cell>{{ user.email }}</clr-dg-cell>
+        <clr-dg-cell> <span class="badge badge-2">{{ user.role }} <span class="clr-sr-only"></span></span></clr-dg-cell>
+        <clr-dg-cell>{{ user.createAT }}</clr-dg-cell>
+        <clr-dg-detail *clrIfDetail="let detail">
+            <clr-dg-detail-header>{{ detail.name }}</clr-dg-detail-header>
+            <clr-dg-detail-body>
+                <b cds-text="medium">Additional Details</b>
+                <table class="table">
+                    <tr>
+                        <th>Property</th>
+                        <th>Value</th>
+                    </tr>
+                    <tr>
+                        <td>ID</td>
+                        <td>{{ detail.id }}</td>
+                    </tr>
+                    <tr>
+                        <td>Wins</td>
+                        <td>{{ detail.email }}</td>
+                    </tr>
+                    <tr>
+                        <td>Favorite Color</td>
+                        <td>
+                            {{ detail.color }}
+                            <span class="color-square" [style.backgroundColor]="detail.color"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Creation</td>
+                        <td>{{ detail.creation | date }}</td>
+                    </tr>
+                </table>
+            </clr-dg-detail-body>
+        </clr-dg-detail>
+    </clr-dg-row>
+
+    <clr-dg-footer>{{ users.length }} users</clr-dg-footer>
+</clr-datagrid>
+<app-user-delete *ngIf="show" [listId]="selected" (close)="actionClose()"></app-user-delete>

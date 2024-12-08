@@ -1,0 +1,69 @@
+<h3> Espace client</h3>
+
+<clr-datagrid [(clrDgSelected)]="selected">
+    <clr-dg-action-bar>
+        <div class="btn-group btn-primary">
+            <button type="button" class="btn btn-success" routerLink="/client-add"> <cds-icon shape="plus"></cds-icon>
+                Ajoute </button>
+            <button type="button" class="btn btn-danger" (click)="deleteAction()" *ngIf="selected.length >=1"> <cds-icon
+                    shape="trash"></cds-icon>
+                Supprimer</button>
+            <button type="button" class="btn" routerLink="/client-update" *ngIf="selected.length == 1">
+                <cds-icon shape="pencil"></cds-icon> Modifie
+            </button>
+        </div>
+
+    </clr-dg-action-bar>
+    <clr-dg-column>client ID</clr-dg-column>
+    <clr-dg-column> Nom client</clr-dg-column>
+    <clr-dg-column> Prenom client </clr-dg-column>
+    <clr-dg-column> Email</clr-dg-column>
+    <clr-dg-column>Date de création </clr-dg-column>
+    <clr-dg-row  *clrDgItems="let client of client" [clrDgItem]="client">
+        <clr-dg-cell>{{ client.id }}</clr-dg-cell>
+        <clr-dg-cell>{{ client.firstName }}</clr-dg-cell>
+        <clr-dg-cell>{{ client.lastName }}</clr-dg-cell>
+        <clr-dg-cell>{{ client.email }}</clr-dg-cell>
+        <clr-dg-cell>{{ client.ville }}</clr-dg-cell>
+        <clr-dg-cell>{{ client.createAT }}</clr-dg-cell>
+        <clr-dg-detail *clrIfDetail="let detail">
+            <clr-dg-detail-header>{{ detail.firstName }}</clr-dg-detail-header>
+            <clr-dg-detail-body>
+                <b cds-text="medium">Additional Details</b>
+                <table class="table">
+                    <tr>
+                        <th>Property</th>
+                        <th>Value</th>
+                    </tr>
+                    <tr>
+                        <td>ID</td>
+                        <td>{{ detail.phone }}</td>
+                    </tr>
+                    <tr>
+                        <td>Wins</td>
+                        <td>{{ detail.email }}</td>
+                    </tr>
+                    <tr>
+                        <td>Favorite Color</td>
+                        <td>
+                            {{ detail.rue }}
+                            <span class="color-square" [style.backgroundColor]="detail.color"></span>
+                        </td>
+                            <td> ville </td>
+                            <td>
+                                {{ detail.ville }}
+                                <span class="color-square" [style.backgroundColor]="detail.color"></span>
+                            </td>
+                    </tr>
+                    <tr>
+                        <td>Creation</td>
+                        <td>{{ detail.creation | date }}</td>
+                    </tr>
+                </table>
+            </clr-dg-detail-body>
+        </clr-dg-detail>
+    </clr-dg-row>
+
+    <clr-dg-footer>{{ client.length }} client</clr-dg-footer>
+</clr-datagrid>
+<app-user-delete *ngIf="show" [listId]="selected" (close)="actionClose()"></app-user-delete>

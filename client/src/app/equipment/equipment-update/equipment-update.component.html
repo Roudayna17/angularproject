@@ -1,0 +1,31 @@
+<form clrForm [formGroup]="form">
+    <clr-input-container>
+        <label for="title">Titre</label>
+        <input id="title" placeholder="Titre" name="title" formControlName="title" required />
+        <clr-control-error>Ce champ est obligatoire !</clr-control-error>
+    </clr-input-container>
+
+    <clr-input-container>
+        <label for="description">Description</label>
+        <input id="description" placeholder="Description" name="description" formControlName="description" required />
+        <clr-control-error>Ce champ est obligatoire !</clr-control-error>
+    </clr-input-container>
+
+    <clr-select-container>
+        <label for="include">Include</label>
+        <select id="include" clrSelect name="include" formControlName="includeSelect">
+            <option value="True">True</option>
+            <option value="False">False</option>
+        </select>
+    </clr-select-container>
+
+    <clr-checkbox-container>
+        <clr-checkbox-wrapper>
+            <input type="checkbox" formControlName="includeCheckbox" clrCheckbox value="option1"
+                name="includeCheckbox" />
+            <label>Include</label>
+        </clr-checkbox-wrapper>
+    </clr-checkbox-container>
+
+    <button class="btn btn-primary" type="submit">Modifier</button>
+</form>
